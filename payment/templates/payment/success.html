@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="alert alert-success">
+    <h4>Payment Successful!</h4>
+    <p><strong>Registration ID:</strong> {{ registration_id }}</p>
+    <p><strong>Total Paid:</strong> ₹{{ total }}</p>
+  </div>
+
+  <a href="{% url 'dashboard_home' %}" class="btn btn-primary mt-3">Open Dashboard</a>
+</div>
+{% endblock %}
