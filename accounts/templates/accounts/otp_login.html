@@ -33,7 +33,7 @@
         .school-name {
             font-size: 1.4rem;
             font-weight: bold;
-            color: #0d6efd;
+            color: #1e9506;
             margin-bottom: 20px;
         }
     </style>
@@ -43,9 +43,10 @@
 <div class="container mt-5">
     <div class="otp-box text-center">
         <img src="{% static 'images/logo.png' %}" alt="School Logo" class="school-logo">
-        <div class="school-name">Springfield Public School</div>
+        <div class="school-name"><u>Delhi Public School</u></div>
+        <h6 class="address">Nyati Estate Rd, Nyati County, Mohammed Wadi, Pune, Autadwadi Handewadi,Maharashtra 411060</h6>
 
-        <h3 class="mb-4 brand-title">Secure OTP Login</h3>
+        <h4 class="mb-4 brand-title">Secure OTP Login</h4>
 
         {% if messages %}
             {% for message in messages %}

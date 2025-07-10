@@ -37,7 +37,6 @@ def student_form_view(request):
         if form.is_valid():
             student_data = form.cleaned_data
             student_data['dob'] = student_data['dob'].isoformat() 
-
             student_list = request.session.get('student_data_list', [])
 
             
@@ -45,6 +44,7 @@ def student_form_view(request):
                 if (existing_student['student_name'].strip().lower() == student_data['student_name'].strip().lower() and
                     existing_student['dob'] == student_data['dob'] and
                     existing_student['exam'] == student_data['exam']):
+                    
                     from django.contrib import messages
                     messages.error(request, "This student has already been registered for the same exam.")
                     return redirect('studentform:student_form')

@@ -44,12 +44,32 @@ def finalize(request, registration_id):
             duplicate_students.append(f"{st['student_name']} - {st['exam']}")
             continue
 
+        # Registration.objects.create(
+        #     parent_name     = parent['parent_name'],
+        #     parent_email    = parent['parent_email'],
+        #     parent_mobile   = parent['parent_mobile'],
+        #     relation        = parent['relation'],
+        #     address         = parent['address'],
+        #     student_name    = st['student_name'],
+        #     dob             = datetime.strptime(st['dob'], '%Y-%m-%d').date(),
+        #     gender          = st['gender'],
+        #     standard        = st['standard'],
+        #     exam            = st['exam'],
+        #     base_fee        = entry['base'],
+        #     tax             = entry['tax'],
+        #     total_fee       = entry['total'],
+        #     payment_status  = True,
+        #     registration_id = registration_id
+        # )
+
+        address = f"{parent.get('address_line1', '')}, {parent.get('address_line2', '')}, {parent.get('city', '')}, {parent.get('state', '')} - {parent.get('pincode', '')}"
+
         Registration.objects.create(
             parent_name     = parent['parent_name'],
             parent_email    = parent['parent_email'],
             parent_mobile   = parent['parent_mobile'],
             relation        = parent['relation'],
-            address         = parent['address'],
+            address         = address,
             student_name    = st['student_name'],
             dob             = datetime.strptime(st['dob'], '%Y-%m-%d').date(),
             gender          = st['gender'],
@@ -61,6 +81,7 @@ def finalize(request, registration_id):
             payment_status  = True,
             registration_id = registration_id
         )
+
 
         total_amount += entry['total']
         registered_count += 1
